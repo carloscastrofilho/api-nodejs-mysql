@@ -128,13 +128,35 @@ app.get("/api/especies", async ( req, resp ) => {
      const connection = await conectar();     
      try {
        const [rows, fields] = await connection.execute('SELECT * FROM especies order by id desc');
-       resp.status(201).send( rows );       
+       resp.status(200).send( rows );       
      } catch (err) {
        console.error('Erro ao executar a consulta:', err);       
      } finally {
        desconectar( connection);
      }
 });
+
+app.post("/api/especies", async (req,resp)=>{
+  const conn = await conectar();
+  try {
+    const { especie } = req.body;
+    const [rows, fields ] = await conn.execute( `INSERT INTO especies ( especie ) VALUES ( "${especie}")`);
+    resp.status(201).send( rows );     
+  } catch (error) {
+    resp.status(501).send({"message": error})    
+  } finally {
+    desconectar(conn);
+  }
+} );
+
+app.delete("/api/especies/:id",  async (req, res) =>{
+  const conn = await conectar();
+  const id = req.params.id ;
+  const retorno = conn.execute(`DELETE FROM especies WHERE id = "${id}"`);
+  res.status(204).send(retorno);
+ })
+
+
 
 const Port = 3500 ;
 const conn = conectar();
