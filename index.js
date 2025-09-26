@@ -156,7 +156,20 @@ app.delete("/api/especies/:id",  async (req, res) =>{
   res.status(204).send(retorno);
  })
 
+app.put("/api/especies/:id", async ( req,res)=> {
+  const conn =  await conectar(); 
+  try {
+    const id = req.params.id;
+    const { especie } = req.body;
+    const retorno = conn.execute(`UPDATE especies SET especie = "${especie}" WHERE id = "${id}"`);
+    res.status(203).send( retorno ) ;
+  } catch (error) {
+    res.status(403).send( {"message": error } );
+  } finally {
+    desconectar( conn );
+  }
 
+} );
 
 const Port = 3500 ;
 const conn = conectar();
