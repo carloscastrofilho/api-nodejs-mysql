@@ -7,8 +7,10 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch index.js"
+    "dev": "node --watch index.js",
+    "test": "node --watch index.js" ,
+    "start": "node --watch index.js",
+    "build": "node --watch index.js"
   },
   "dependencies": {
     "express": "^5.1.0",

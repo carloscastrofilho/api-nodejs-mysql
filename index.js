@@ -1,36 +1,9 @@
 const express = require("express") ;
-const mysql = require("mysql2/promise");
 
-const stringConnection =  {
-       host: 'localhost',
-       user: 'root',
-       password: '',
-       database: 'clinica_veterinaria',
-       port: 3306
-       } ;
+const { conectar, desconectar } = require( './src/database/config' );
 
-async function conectar() {
-    const connection = await mysql.createConnection(
-       stringConnection
-    );
-     return connection;
-   }
+const Port = 3500 ;
 
-async function desconectar(connection) {
-  connection.end();
-}
-// exemplo
-async function consultarDados() {
-     const connection = await conectar();
-     try {
-       const [rows, fields] = await connection.execute('SELECT * FROM sua_tabela');
-       console.log(rows);
-     } catch (err) {
-       console.error('Erro ao executar a consulta:', err);
-     } finally {
-       connection.end();
-     }
-   }
 
 const app = express() ;
 app.use( express.json()) ;
@@ -49,6 +22,7 @@ app.get("/", ()=> {
 // endpoint 1 - racas
 // 1. rota  = GET == select * from == Read
 app.get("/api/racas", async ( req, resp ) => {
+
      const connection = await conectar();     
      try {
        const [rows, fields] = await connection.execute('SELECT * FROM racas order by id desc');
@@ -171,7 +145,6 @@ app.put("/api/especies/:id", async ( req,res)=> {
 
 } );
 
-const Port = 3500 ;
-const conn = conectar();
+
 
 app.listen( Port , () => { console.log ( `servidor rodando na porta: ${Port} !`)});
