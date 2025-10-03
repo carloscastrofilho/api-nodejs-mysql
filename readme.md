@@ -46,3 +46,12 @@ npm run dev
 
 ---
 Estrurua organizacional do projeto:
+
+
+---
+// criando uma rota
+// CRUD == SQL  == API'
+// Create == Insert == POST
+// Read == Select == GET
+// Update == Update == PUT
+// Delete == Delete  == DELETE

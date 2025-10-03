@@ -12,7 +12,7 @@ POST http://localhost:3500/api/racas
 Content-Type: application/json
 
 {
-    "raca" : "rato"
+    "raca" : "gato"
 }
 
 ###
@@ -20,7 +20,7 @@ PUT http://localhost:3500/api/racas/1
 Content-Type: application/json
 
 {
-    "raca" : "Gato"
+    "raca" : "mosquitos"
 }
 
 ###
