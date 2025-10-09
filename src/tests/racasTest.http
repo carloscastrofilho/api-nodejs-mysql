@@ -5,22 +5,22 @@ GET http://localhost:3500/api/racas
 
 ###
 # router param
-GET http://localhost:3500/api/racas/1
+GET http://localhost:3500/api/racas/7
 
 ###
 POST http://localhost:3500/api/racas
 Content-Type: application/json
 
 {
-    "raca" : "gato"
+    "raca" : "galinha"
 }
 
 ###
-PUT http://localhost:3500/api/racas/1
+PUT http://localhost:3500/api/racas/7
 Content-Type: application/json
 
 {
-    "raca" : "mosquitos"
+    "raca" : "galo"
 }
 
 ###

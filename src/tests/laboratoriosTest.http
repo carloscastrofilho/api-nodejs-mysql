@@ -1,0 +1,30 @@
+###
+#usar o rest client, para executar a roda click em "Send Request"
+###
+GET http://localhost:3500/api/laboratorios
+
+###
+# router param
+GET http://localhost:3500/api/laboratorios/7
+
+###
+POST http://localhost:3500/api/laboratorios
+Content-Type: application/json
+
+{
+    "raca" : "galinha"
+}
+
+###
+PUT http://localhost:3500/api/laboratorios/7
+Content-Type: application/json
+
+{
+    "raca" : "galo"
+}
+
+###
+DELETE http://localhost:3500/api/laboratorios/1
+
+
+
