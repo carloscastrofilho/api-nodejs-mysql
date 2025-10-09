@@ -55,3 +55,8 @@ Estrurua organizacional do projeto:
 // Read == Select == GET
 // Update == Update == PUT
 // Delete == Delete  == DELETE
+
+---
+Projeot para Prática e Estudos
+
+Acesse explicações detalhada do projeto `clinicapest` [Guia de Completo](clinicapets/clinicapets.md)
