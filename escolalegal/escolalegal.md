@@ -1,8 +1,8 @@
 
 
-# Projeto clinica para Pets
+# Projeto clinica Escola Legal
 
-* Objetivo : Construir projeto back-end com o proprosito de gerenciar uma clinica de atendimento a animais.
+* Objetivo : Construir projeto back-end com o proprosito de gerenciar uma unidade escolar.
 
 ### Tecnologias: 
   * **nodeJs** - servidor api
@@ -29,7 +29,7 @@ Ele fornece por exemplo mecanismo para escrever manipuladores para solicitaçõe
 ---
 
 ### Descritivo projeto:
-  * Para cada visita do animal à veterinária deseja-se saber qual o animal e qual o veterinário envolvido nela, a data e o horário de tal atendimento. É necessário ainda, saber qual foi o tratamento indicado pelo veterinário em cada visita. Um tratamento é composto por remédio, dosagens de tais remédios (que podem ser mais de um por visita), data de início e data de fim do tratamento. Sobre os remédios são armazenados apenas o nome e qual o laboratório que o fabrica. Sobre o laboratório é importante saber nome e telefone.
+  * Controlar as matriculas dos alunos, o curso , disciplina e docente que esta ministrando aula para os alunos.
 
 ---
 
@@ -40,14 +40,14 @@ Ele fornece por exemplo mecanismo para escrever manipuladores para solicitaçõe
 * abra o admin do mysql pelo painel de controle do xampp, este ira carregar no seu navegador padrão o phpadmin que irá permitir a gestão dos bancos de dados mysql no seu pc, caso não esteja utilizando o xampp e sim outro programa ou o banco diretamete utilize o programa de acesso de sua preferencia.
 
 
-* Voce pode criar o banco com auxilio do script que esta na pasta do projeto src/db de nome `clinicapets.sql`, inserindo o conteúdo em uma sessão  `SQL` do phpadmin e executando os scripts sql, ou importando o backup do banco de dados que esta na raiz do projeto via phpAdmin, escolha uma das duas técnicas.
+* Voce pode criar o banco com auxilio do script que esta na pasta do projeto src/db de nome `escolalegal.sql`, inserindo o conteúdo em uma sessão  `SQL` do phpadmin e executando os scripts sql, ou importando o backup do banco de dados que esta na raiz do projeto via phpAdmin, escolha uma das duas técnicas.
 
 ---
 ####  Tela nanutenção phpmyadmin
 ![alt text](./images/phpmyadmin-tela-manutencao.png)
 
 ---
-#### Der para o projeto clinicapets
+#### Der para o projeto escolalegal
 
 ![alt text](./images/der-clinicapet.png)
 
@@ -74,7 +74,7 @@ Ele fornece por exemplo mecanismo para escrever manipuladores para solicitaçõe
 #### phpmyadmin Exportando um Banco de Dados 
 * escolha o local para salvar o backup do banco de dados e informe o nome para o arquivo;
 * padronizaremos o nome do arquivo de backup para: `backup-<nome-banco-dados>-<dia>-as-<hora-minuto>.sql`
-`backup-clinicapets-07-10-2025-as-19-22.sql`
+`backup-escolalegal-07-10-2025-as-19-22.sql`
 
 ![alt text](./images/phpmyadmin-exportar-local-salvar.png)
 
@@ -116,8 +116,8 @@ Ele fornece por exemplo mecanismo para escrever manipuladores para solicitaçõe
 ---
 ### Atividade Avaliativa
 
-1. Criar os **endpoints/rotas** de todas as tabelas do banco de dados `clinicapets`;
-2. expor os **endpoints/rotas** criados para o banco `clinicapets`;
+1. Criar os **endpoints/rotas** de todas as tabelas do banco de dados `escolalegal`;
+2. expor os **endpoints/rotas** criados para o banco `escolalegal`;
 3. Criar e testar todos os **endpoints/rotas** como o `restclient`( .http), excutando os seguintes teste:
   a. incluir 2 registros;
   b. excluir o segundo inseriro pelo id;
@@ -125,27 +125,22 @@ Ele fornece por exemplo mecanismo para escrever manipuladores para solicitaçõe
   e. consultar o primeiro registro pelo id;
   f. consultar todos os registros do endpoint.
 
-4. Gerar um backup do banco de dados `clinicapets` com o nome seguindo o seguinte padrão:
-  `backup-<ra-aluno>-clinicapets-10-10-25-as-<hora-minuto>`.sql e coloque na raiz do projeto;
+4. Gerar um backup do banco de dados `escolalegal` com o nome seguindo o seguinte padrão:
+  `backup-<ra-aluno>-escolalegal-10-10-25-as-<hora-minuto>`.sql e coloque na raiz do projeto;
 
 ##### endpoints / rotas
 
 | tabela | end-point |  get | getBy | post | put | delete | 
 | -------| --------- | -----|-------|------|-----|--------|
-|animais | /animais    |     |      |      |     |        |
-|atendimentos | /atendimentos|      |       |      |     |        |
-|atendimentos_tratamentos | /atendimentos_tratamentos |      |       |      |     |        |
-|donos | /donos |      |       |      |     |        |
-|especialidades | /especialidades       |       |      |     |        |
-|especies | /especies |      |       |      |     |        |
-|laboratorios | /laboratorios    |      |       |      |     |        |
-|racas| /racas    |      |       |      |     |        |
-|remedios | /remedios    |      |       |      |     |        |
+|alunos | /alunos    |     |      |      |     |        |
+|professores | /professores|      |       |      |     |        |
+|disciplinas | /disciplinas |      |       |      |     |        |
+|cursos | /cursos |      |       |      |     |        |
+|matriculas | /matriculas |      |       |      |     |        |
 |roles| /roles    |      |       |      |     |        |
 |roles | /users    |      |       |      |     |        |
 |users_roles | /users_roles    |      |       |      |     |        |
-|veterinarios | /veterinarios    |      |       |      |     |        |
-|veterinarios_especialidades | /veterinarios_especialidades    |      |       |      |     |        |
+
 * os arquivos devem seguir a padronização acordada, exemplo de nome do arquivo de testes:
 `usersServices.js`  e os arquivos devem estar dentro da pasta `src\services` .
 
@@ -158,20 +153,14 @@ Ele fornece por exemplo mecanismo para escrever manipuladores para solicitaçõe
 
 | tabela | end-point |  get | getBy | post | put | delete | 
 | -------| --------- | -----|-------|------|-----|--------|
-|animais | /animais    |     |      |      |     |        |
-|atendimentos | /atendimentos|      |       |      |     |        |
-|atendimentos_tratamentos | /atendimentos_tratamentos |      |       |      |     |        |
-|donos | /donos |      |       |      |     |        |
-|especialidades | /especialidades       |       |      |     |        |
-|especies | /especies |      |       |      |     |        |
-|laboratorios | /laboratorios    |      |       |      |     |        |
-|racas| /racas    |      |       |      |     |        |
-|remedios | /remedios    |      |       |      |     |        |
+|alunos | /alunos    |     |      |      |     |        |
+|professores | /professores|      |       |      |     |        |
+|disciplinas | /disciplinas |      |       |      |     |        |
+|cursos | /cursos |      |       |      |     |        |
+|matriculas | /matriculas |      |       |      |     |        |
 |roles| /roles    |      |       |      |     |        |
 |roles | /users    |      |       |      |     |        |
 |users_roles | /users_roles    |      |       |      |     |        |
-|veterinarios | /veterinarios    |      |       |      |     |        |
-|veterinarios_especialidades | /veterinarios_especialidades    |      |       |      |     |        | 
 
 * os arquivos devem seguir a padronização acordada, exemplo de nome do arquivo de testes:
 `usersTest.http`  e os arquivos devem estar dentro da pasta `src\tests` .
