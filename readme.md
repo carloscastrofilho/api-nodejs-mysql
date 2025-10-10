@@ -47,16 +47,51 @@ npm run dev
 ---
 Estrurua organizacional do projeto:
 
+🧱 Estrutura do Projeto (MVC) que estamos utilizando para o desenvolviemnto do nosso servidor backend.
+
+```bash
+app/
+    ├── src/
+        │
+        ├── controllers/
+        │   └── usersControllers.js
+        ├── services/
+        │   └── usersServices.js
+        ├── routes/
+        │   └── usersRoutes.js
+        ├── database/
+        │   └── config.js
+        ├── tests/
+        │   └── usersTests.http
+        │
+        ├── index.js
+        ├── readme.md
+        ├── .gitignore
+        └── package.json
+```
 
 ---
-// criando uma rota
-// CRUD == SQL  == API'
-// Create == Insert == POST
-// Read == Select == GET
-// Update == Update == PUT
-// Delete == Delete  == DELETE
+
+### Tabela comparativa 
+* abaixo vemos a tabela compartiva entre o conceito CRUD para SQL ansy e para o padrão api-rest;
+
+| CRUD    | SQL-ANSY | api-rest | end-point |ação
+| --------|---------|---------|----|----
+| create | insert | POST | `<endpoint>/` |Inserir/criar um novo registro end-point/tabela
+| read | select | GET | `<endpoint>/` |recuperar/consultar os registros de um end-point/tabela
+| update | update | PUT | `<endpoint>/:id` |alterar/modificar um registro de um end-point/tabela
+| delete | delete | DELETE | `<endpoint>/:id` | apagar/excluir um registro de um end-point/tabela
+| read | select | GET | `<endpoint>/:id` |recuperar/consulta um registro um end-point/tabela
 
 ---
-Projeot para Prática e Estudos
+
+### Fluxo de MVC
+
+Diagrama atual do nosso projeto.
+
+![fluxo mvc ver~sao 1](diagrama-mvc-app-v1.png)
+
+---
+### Projeto para Prática e Estudos
 
 Acesse explicações detalhada do projeto `clinicapest` [Guia de Completo](clinicapets/clinicapets.md)

@@ -5,9 +5,28 @@
 * Objetivo : Construir projeto back-end com o proprosito de gerenciar uma clinica de atendimento a animais.
 
 ### Tecnologias: 
-  * **Python** - servidor api
+  * **nodeJs** - servidor api
   * **mysql** - banco de dados
 
+#### Express
+
+* **Node** (ou mais formalmente Node.js ) é um ambiente de execução multiplataforma de código aberto que permite aos desenvolvedores criar todos os tipos de ferramentas e aplicativos do lado do servidor em JavaScript . O ambiente de execução destina-se ao uso fora do contexto de um navegador (ou seja, executado diretamente em um computador ou sistema operacional de servidor). Dessa forma, o ambiente omite APIs JavaScript específicas do navegador e adiciona suporte para APIs de sistema operacional mais tradicionais, incluindo HTTP e bibliotecas de sistema de arquivos.
+
+* **Express** é o framework web Node.js mais popular e a biblioteca subjacente para diversos outros frameworks Node.js populares. 
+
+Ele fornece por exemplo mecanismo para escrever manipuladores para solicitações com diferentes verbos HTTP em diferentes caminhos de URL (rotas).
+
+---
+
+* Dependencias:
+
+| dependencia | uso | install 
+| -------------------|-----| -----|
+| express | framework de aplicações web Node.js mínimo. | npm install express 
+| mysql2  | drive de conexão com banco de dados mysql/maria |
+
+
+---
 
 ### Descritivo projeto:
   * Para cada visita do animal à veterinária deseja-se saber qual o animal e qual o veterinário envolvido nela, a data e o horário de tal atendimento. É necessário ainda, saber qual foi o tratamento indicado pelo veterinário em cada visita. Um tratamento é composto por remédio, dosagens de tais remédios (que podem ser mais de um por visita), data de início e data de fim do tratamento. Sobre os remédios são armazenados apenas o nome e qual o laboratório que o fabrica. Sobre o laboratório é importante saber nome e telefone.
@@ -95,27 +114,81 @@
 * selecione o banco de dados e verifique que as tabelas foram criadas e os dados foram recuperados.
 
 ---
-Atividade Avaliativa
+### Atividade Avaliativa
 
-crie os endpoints de todas as tabelas do banco de dados clinicapets e gere os arquivo de teste em restclient ( .http)
+1. Criar os **endpoints/rotas** de todas as tabelas do banco de dados `clinicapets`;
+2. expor os **endpoints/rotas** criados para o banco `clinicapets`;
+3. Criar e testar todos os **endpoints/rotas** como o `restclient`( .http), excutando os seguintes teste:
+  a. incluir 2 registros;
+  b. excluir o segundo inseriro pelo id;
+  c. alterar o registro que sobrou pelo id;
+  e. consultar o primeiro registro pelo id;
+  f. consultar todos os registros do endpoint.
 
-* api
+4. Gerar um backup do banco de dados `clinicapets` com o nome seguindo o seguinte padrão:
+  `backup-<ra-aluno>-clinicapets-10-10-25-as-<hora-minuto>`.sql e coloque na raiz do projeto;
+
+##### endpoints / rotas
 
 | tabela | end-point |  get | getBy | post | put | delete | 
 | -------| --------- | -----|-------|------|-----|--------|
-| users  | /users    |      |       |      |     |        |
-| roles  | /roles    |      |       |      |     |        |
-| users_roles  | /userroles    |      |       |      |    |
+|animais | /animais    |     |      |      |     |        |
+|atendimentos | /atendimentos|      |       |      |     |        |
+|atendimentos_tratamentos | /atendimentos_tratamentos |      |       |      |     |        |
+|donos | /donos |      |       |      |     |        |
+|especialidades | /especialidades       |       |      |     |        |
+|especies | /especies |      |       |      |     |        |
+|laboratorios | /laboratorios    |      |       |      |     |        |
+|racas| /racas    |      |       |      |     |        |
+|remedios | /remedios    |      |       |      |     |        |
+|roles| /roles    |      |       |      |     |        |
+|roles | /users    |      |       |      |     |        |
+|users_roles | /users_roles    |      |       |      |     |        |
+|veterinarios | /veterinarios    |      |       |      |     |        |
+|veterinarios_especialidades | /veterinarios_especialidades    |      |       |      |     |        |
+* os arquivos devem seguir a padronização acordada, exemplo de nome do arquivo de testes:
+`usersServices.js`  e os arquivos devem estar dentro da pasta `src\services` .
 
+* os arquivos devem seguir a padronização acordada, exemplo de nome do arquivo de testes:
+`usersRoutes.js`  e os arquivos devem estar dentro da pasta `src\routes` .
 
+---
 
-
-* testes
+##### testes
 
 | tabela | end-point |  get | getBy | post | put | delete | 
 | -------| --------- | -----|-------|------|-----|--------|
-| users  | /users    |      |       |      |     |        
-| roles  | /roles    |      |       |      |     |        
-| users_roles  | /userroles    |      |       |      |     
+|animais | /animais    |     |      |      |     |        |
+|atendimentos | /atendimentos|      |       |      |     |        |
+|atendimentos_tratamentos | /atendimentos_tratamentos |      |       |      |     |        |
+|donos | /donos |      |       |      |     |        |
+|especialidades | /especialidades       |       |      |     |        |
+|especies | /especies |      |       |      |     |        |
+|laboratorios | /laboratorios    |      |       |      |     |        |
+|racas| /racas    |      |       |      |     |        |
+|remedios | /remedios    |      |       |      |     |        |
+|roles| /roles    |      |       |      |     |        |
+|roles | /users    |      |       |      |     |        |
+|users_roles | /users_roles    |      |       |      |     |        |
+|veterinarios | /veterinarios    |      |       |      |     |        |
+|veterinarios_especialidades | /veterinarios_especialidades    |      |       |      |     |        | 
 
-* os arquivos devem seguir a padronização acordada.
+* os arquivos devem seguir a padronização acordada, exemplo de nome do arquivo de testes:
+`usersTest.http`  e os arquivos devem estar dentro da pasta `src\tests` .
+
+
+* Peso dos metodos de cada endPoint/Rota
+
+| end-point | test |  get | getBy | post | put | delete | 
+| ---------| --------- | -----|-------|------|-----|--------|
+|   peso    |   15  |  10  |  10   |  30 | 25  |  10    |
+
+---
+
+✅ Exemplo de chamada dos nosso endpoint/routes
+
+* para chamar a rota `GET` do endpoint user utilizamos o comando abaixo:
+
+`http://localhost:3500/api/users`
+
+---
