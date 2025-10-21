@@ -4,7 +4,7 @@ const stringConnection =  {
        host: 'localhost',
        user: 'root',
        password: '',
-       database: 'clinicapets',
+       database: 'escolalegal',
        port: 3306
        } ;
 

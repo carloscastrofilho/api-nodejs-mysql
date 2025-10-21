@@ -1,0 +1,29 @@
+
+
+GET http://localhost:3500/api/disciplinas
+
+###
+GET http://localhost:3500/api/disciplinas/6
+
+###
+POST http://localhost:3500/api/disciplinas
+Content-Type: application/json; charset=utf-8
+
+ {
+    "disciplina": "Inteligencia Computadores",
+    "sigla": "Inte"
+  }
+
+###
+
+
+DELETE http://localhost:3500/api/disciplinas/6
+
+###
+PUT http://localhost:3500/api/disciplinas/6
+Content-Type: application/json; charset=utf-8
+
+{
+    "disciplina": "Inteligencia ",
+    "sigla": "Inte"
+}
