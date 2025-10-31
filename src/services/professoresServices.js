@@ -71,4 +71,52 @@ const erase = async (req,res) =>{
 }
 
 
+const post_auto = async (req, res) => {
+  const connection = await conectar();
+  try {
+    const data = req.body; // Ex: { nome: "Carlos", areaAtuacao: "TI", cursos_id: 2 }
+
+    // Monta as chaves e os placeholders automaticamente
+    const columns = Object.keys(data).join(', ');
+    const placeholders = Object.keys(data).map(() => '?').join(', ');
+    const values = Object.values(data);
+
+    // Monta a query dinâmica
+    const sqlText = `INSERT INTO professores ( ${columns} ) VALUES ( ${placeholders} )`;
+    
+    //  executa a instrução sqlText passando os values para cada coluna em values
+    const [result] = await connection.execute(sqlText, values);
+
+    res.status(201).send({ success: true, result });
+  } catch (error) {
+    res.status(400).send({ success: false, message: error.message });
+  } finally {
+    desconectar(connection);
+  }
+};
+
+
+const put_auto = async (req, res) => {
+  const connection = await conectar();
+  try {
+    const id = req.params.id;
+    const data = req.body; // Ex: { nome: "Novo nome", areaAtuacao: "Administração" }
+
+    // Monta automaticamente os pares "coluna = ?"
+    const updates = Object.keys(data).map(key => `${key} = ?`).join(', ');
+    const values = Object.values(data);
+
+    const sql = `UPDATE professores SET ${updates} WHERE id = ?`;
+
+    const [result] = await connection.execute(sql, [...values, id]);
+    res.status(202).send({ success: true, result });
+  } catch (error) {
+    res.status(400).send({ success: false, message: error.message });
+  } finally {
+    desconectar(connection);
+  }
+};
+
+
+
 module.exports = { get, getByid, erase , post, put }

@@ -3,7 +3,7 @@ const mysql = require("mysql2/promise");
 const stringConnection =  {
        host: 'localhost',
        user: 'root',
-       password: '',
+       password: 'mariadbrootPW',
        database: 'escolalegal',
        port: 3306
        } ;

@@ -75,13 +75,13 @@ app/
 ### Tabela comparativa 
 * abaixo vemos a tabela compartiva entre o conceito CRUD para SQL ansy e para o padrão api-rest;
 
-| CRUD    | SQL-ANSY | api-rest | end-point |ação
+| CRUD    | SQL-ANSY | api-rest | end-point |ação | parametro
 | --------|---------|---------|----|----
-| create | insert | POST | `<endpoint>/` |Inserir/criar um novo registro end-point/tabela
-| read | select | GET | `<endpoint>/` |recuperar/consultar os registros de um end-point/tabela
-| update | update | PUT | `<endpoint>/:id` |alterar/modificar um registro de um end-point/tabela
-| delete | delete | DELETE | `<endpoint>/:id` | apagar/excluir um registro de um end-point/tabela
-| read | select | GET | `<endpoint>/:id` |recuperar/consulta um registro um end-point/tabela
+| create | insert | POST | `<endpoint>/` |Inserir/criar um novo registro end-point/tabela | `body`
+| read | select | GET | `<endpoint>/` |recuperar/consultar os registros de um end-point/tabela | `nenhum`
+| update | update | PUT | `<endpoint>/:id` |alterar/modificar um registro de um end-point/tabela | `prams/body`
+| delete | delete | DELETE | `<endpoint>/:id` | apagar/excluir um registro de um end-point/tabela | `params`
+| read | select | GET | `<endpoint>/:id` |recuperar/consulta um registro um end-point/tabela | `params`
 
 ---
 

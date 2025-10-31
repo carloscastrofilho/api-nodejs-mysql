@@ -29,10 +29,20 @@ const getByid = async ( req, resp ) => {
 
 // 3.rota  = POST
 const post = async (req,res) => {
-    const { titulo, cargaHoraria, professores_id } = req.body ;
+    const dataPayload = req.body ;
+
+    const campos = Object.keys(dataPayload); 
+    const valores = Object.values(dataPayload); 
+
+    let comando = ''; 
+
     const connection = await conectar();
     try {
-        const result = await connection.execute( `INSERT INTO ${tableName} (titulo, cargaHoraria, professores_id) values ( "${titulo}" , "${cargaHoraria}"  , "${professores_id}" )`);
+        comando = `INSERT INTO ${tabela} (${campos.join(', ')}) VALUES ("${valores.join('", "')}")`; 
+        const result = await connection.execute( comando );
+
+        //const result = await connection.execute( `INSERT INTO ${tableName} (titulo, cargaHoraria, professores_id) values ( "${titulo}" , "${cargaHoraria}"  , "${professores_id}" )`);
+
         res.status(201).send( result );
     } catch (error) {
         res.status(401).send({'message': error, 'sucess': 'error'});        
@@ -43,11 +53,25 @@ const post = async (req,res) => {
 
 // 4.rota  = PUT = UPDATE
 async function put(req,res) {
-    const { titulo, cargaHoraria, professores_id } = req.body ;
+    // const { titulo, cargaHoraria, professores_id } = req.body ;
     const id = req.params.id;
+
+    const dataPayload = req.body ;
+    const campos = Object.keys(dataPayload); 
+    const valores = Object.values(dataPayload); 
+    let comando = ''; 
+
     const connection = await conectar();
     try {
-      const result = await connection.execute(`UPDATE ${tableName} SET titulo = "${titulo}" ,cargaHoraria = "${cargaHoraria}"  , professores_id = "${professores_id}"  WHERE id = ${id}`);
+
+      let comando = ''; 
+      comando = `UPDATE ${tabela} SET `;
+      comando += campos.map((campo, i) => `${campo} = "${valores[i]}"`).join(', ');
+      comando += ` WHERE id = ${id}`;
+
+      //const result = await connection.execute(`UPDATE ${tableName} SET titulo = "${titulo}" ,cargaHoraria = "${cargaHoraria}"  , professores_id = "${professores_id}"  WHERE id = ${id}`);
+      const result = await connection.execute( comando );
+    
       res.status(202).send( result );
     } catch (error) {
         res.status(401).send({'message': error, 'sucess': 'error'});    

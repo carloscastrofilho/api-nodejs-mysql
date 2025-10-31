@@ -1,0 +1,29 @@
+
+
+GET http://localhost:3500/api/cursos
+
+###
+GET http://localhost:3500/api/cursos/5
+
+###
+POST http://localhost:3500/api/cursos
+Content-Type: application/json; charset=utf-8
+
+{
+    "titulo": "Servidores I",
+    "cargaHoraria": 40,
+    "professores_id": 2
+  }
+
+###
+
+
+DELETE http://localhost:3500/api/especies/7
+
+###
+PUT http://localhost:3500/api/especies/7
+Content-Type: application/json; charset=utf-8
+
+{
+    "especie": "rato ao da praio"
+}
