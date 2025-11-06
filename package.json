@@ -1,16 +1,16 @@
 {
   "name": "aula-3-2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Api para uso em sala de aula, disciplina ",
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "node --watch index.js",
-    "test": "node --watch index.js" ,
-    "start": "node --watch index.js",
-    "build": "node --watch index.js"
+    "dev": "node --watch server.js",
+    "test": "node --watch server.js" ,
+    "start": "node --watch server.js",
+    "build": "node --watch server.js"
   },
   "dependencies": {
     "express": "^5.1.0",

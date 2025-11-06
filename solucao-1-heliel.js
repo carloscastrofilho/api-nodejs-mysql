@@ -1,7 +1,7 @@
 // Função para gerar o comando SQL dinamicamente 
 function gerarComandoSQL(tabela, dados, id = null) {
 
-    const campos = Object.keys(dados);
+    const campos = Object.ke .keys(dados);
     const valores = Object.values(dados);
 
     let comando = '';

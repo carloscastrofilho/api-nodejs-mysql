@@ -1,6 +1,6 @@
 const { conectar, desconectar } = require( '../database/config' );
 
-const tableName = "cursos";
+const tableName = "modelos";
 
  const get = async ( req, resp ) => {
      const connection = await conectar();     

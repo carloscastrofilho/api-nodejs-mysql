@@ -1,5 +1,7 @@
 const { conectar, desconectar } = require( '../database/config' );
 
+const tableName = "disciplinas";
+
  const get = async ( req, resp ) => {
      const connection = await conectar();     
      try {
@@ -28,10 +30,26 @@ const getByid = async ( req, resp ) => {
 
 // 3.rota  = POST
 const post = async (req,res) => {
+    const payloud = req.body ;
     const { disciplina, sigla  } = req.body ;
+    
+    console.log(payloud);
+    const campos = Object.keys(payloud);
+    const valores = Object.values(payloud);
+    console.log(campos);
+    console.log(valores);
+    const sqlFROM = `INSERT INTO ${tableName} ( `;
+    const sqlFIELDS = `disciplina, sigla ) values ( `
+    const sqlVALUES = `"${disciplina}" , "${sigla}" )`
+    const sqlText = sqlFROM + sqlFIELDS + sqlVALUES
+    console.log( sqlText);
+    
     const connection = await conectar();
+    let sqlText1 = `INSERT INTO ${tableName} (disciplina, sigla ) values ( "${disciplina}" , "${sigla}" )`
+
+    
     try {
-        const result = await connection.execute( `INSERT INTO disciplinas (disciplina, sigla ) values ( "${disciplina}" , "${sigla}" )`);
+        const result = await connection.execute( sqlText );
         res.status(201).send( result );
     } catch (error) {
         res.status(401).send({'message': error, 'sucess': 'error'});        
