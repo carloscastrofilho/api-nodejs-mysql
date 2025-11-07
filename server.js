@@ -7,6 +7,9 @@ const matriculasRoutes = require('./src/routes/matriculasRoutes');
 
 const modelosRoutes = require('./src/routes/modelosRoutes');
 
+const usersRoutes = require('./src/routes/usersRoutes')
+const authRoutes  = require('./src/routes/authRoutes')
+
 const Port = 3500 ;
 const app = express() ;
 
@@ -29,4 +32,8 @@ app.use('/api/professores', professoresRoutes );
 app.use('/api/disciplinas', disciplinasRoutes );
 app.use('/api/matriculas', matriculasRoutes );
 app.use('/api/modelos',modelosRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/auth', authRoutes);
+
+
 app.listen( Port , () => { console.log ( `servidor rodando na porta: ${Port} !`)});
