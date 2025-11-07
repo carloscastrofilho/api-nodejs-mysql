@@ -1,6 +1,13 @@
 
+### Variables 
+@apiurl = http://localhost:3500/api
+@tableName = disciplinas
 
-GET http://localhost:3500/api/disciplinas
+### GET users
+GET {{apiurl}}/{{tableName}} HTTP/1.1
+
+
+GET http://localhost:3500/api/{@tableName}
 
 ###
 GET http://localhost:3500/api/disciplinas/6
@@ -10,7 +17,7 @@ POST http://localhost:3500/api/disciplinas
 Content-Type: application/json; charset=utf-8
 
  {
-    "disciplina": "Inteligencia Computadores",
+    "disciplina": " Computadores",
     "sigla": "Inte"
   }
 
